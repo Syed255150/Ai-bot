@@ -1,0 +1,139 @@
+import ctypes
+import random
+import time
+from pynput.mouse import Controller
+import pygetwindow as gw
+from pywinauto import findwindows, Application
+import win32gui
+import win32con
+import win32api
+
+# Function to perform background click
+def click_in_background(hwnd, x, y):
+    """Simulate a mouse click at (x, y) in the background on window hwnd using Windows messages."""
+    # Convert screen coordinates to client area coordinates
+    client_point = win32gui.ScreenToClient(hwnd, (x, y))
+    client_x, client_y = client_point
+
+    # Pack coordinates into lParam
+    lParam = win32api.MAKELONG(client_x, client_y)
+
+    # Send WM_LBUTTONDOWN and WM_LBUTTONUP messages to the window
+    win32gui.PostMessage(hwnd, win32con.WM_LBUTTONDOWN, win32con.MK_LBUTTON, lParam)
+    win32gui.PostMessage(hwnd, win32con.WM_LBUTTONUP, None, lParam)
+
+# Function to perform random clicks in a defined area
+def random_tapping(hwnd, center, radius):
+    """Perform random clicking within a defined radius around the center on window hwnd."""
+    center_x, center_y = center
+
+    # Adjusted time to run the bot
+    tap_duration = random.randint(29, 30)  # Random time between 29 to 30 seconds
+    total_taps = random.randint(350, 450)  # Random total number of taps
+
+    start_time = time.time()  # Record the start time
+    taps_done = 0
+
+    while time.time() - start_time < tap_duration:
+        if taps_done >= total_taps:
+            break
+
+        # Randomize click position within the defined radius around the center
+        random_x = center_x + random.randint(-radius, radius)
+        random_y = center_y + random.randint(-radius, radius)
+
+        # Perform the click in the background
+        click_in_background(hwnd, random_x, random_y)
+        taps_done += 1
+
+        # Calculate the remaining time
+        elapsed_time = time.time() - start_time
+        remaining_time = max(0, tap_duration - elapsed_time)
+        
+        # Adjust the delay dynamically to match the duration and target tap count
+        average_delay = remaining_time / max(1, total_taps - taps_done)
+        realistic_delay = random.uniform(average_delay * 0.8, average_delay * 1.2)
+        time.sleep(realistic_delay)
+
+    print(f"Completed {taps_done} taps in {tap_duration} seconds.")
+
+# Function to select the game window area
+def select_game_area():
+    """Select the area for the bot to click using terminal input."""
+    print("Move the mouse to the top-left corner of the game window and press Enter...")
+    input()
+    mouse = Controller()
+    top_left = mouse.position
+
+    # Get the window handle under the mouse cursor at the top-left corner
+    hwnd = win32gui.WindowFromPoint(top_left)
+
+    # Get the window rectangle (left, top, right, bottom)
+    rect = win32gui.GetWindowRect(hwnd)
+    left, top, right, bottom = rect
+
+    print(f"Selected window handle: {hwnd}, window rect: {rect}")
+
+    print("Move the mouse to the bottom-right corner of the game window and press Enter...")
+    input()
+    bottom_right = mouse.position
+
+    print(f"Selected area from {top_left} to {bottom_right}.")
+    return hwnd, top_left, bottom_right
+
+# Function to handle break between sessions
+def take_a_break():
+    """Take a random break between tapping sessions with a countdown."""
+    break_duration = random.randint(60, 80)  # 60 to 80 seconds (1 to 1.2 minutes)
+    print(f"Taking a break for {break_duration / 60:.2f} minutes.")
+
+    # Countdown timer for the break
+    for remaining in range(break_duration, 0, -1):
+        print(f"Resuming in {remaining} seconds...", end='\r')
+        time.sleep(1)
+
+    print("Break finished! Resuming tapping...")
+
+# Function to make the Telegram window stay on top
+def make_telegram_on_top():
+    """Make the Telegram window stay on top of other windows."""
+    try:
+        telegram_windows = findwindows.find_elements(title_re="Telegram")
+        if telegram_windows:
+            app = Application().connect(handle=telegram_windows[0].handle)
+            telegram_window = app.window(handle=telegram_windows[0].handle)
+            telegram_window.set_focus()
+            telegram_window.set_topmost(True)
+            print("Telegram window is now set to stay on top.")
+        else:
+            print("Telegram window not found.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+if __name__ == "__main__":
+    print("Starting the bot...")
+
+    # Make Telegram window stay on top
+    make_telegram_on_top()
+
+    # Select the area of the game to tap once
+    hwnd, top_left, bottom_right = select_game_area()
+
+    # Extract coordinates from the tuples
+    top_left_x, top_left_y = top_left
+    bottom_right_x, bottom_right_y = bottom_right
+
+    # Calculate the center of the selected window
+    center_x = (top_left_x + bottom_right_x) // 2
+    center_y = (top_left_y + bottom_right_y) // 2
+    center = (center_x, center_y)
+
+    # Define a small radius around the center where clicks will happen
+    radius = 5  # You can adjust this radius as needed
+
+    while True:
+        # Execute the random tapping function
+        random_tapping(hwnd, center, radius)
+
+        # Take a break after each tapping session
+        take_a_break()
