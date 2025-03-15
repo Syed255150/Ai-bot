@@ -1,0 +1,27 @@
+C:\Users\pc\AppData\Local\Programs\Python\Python311\python.exe: can't open file 'K:\\Projects\\FB ads\\scheduler_script.py': [Errno 2] No such file or directory
+start scheduler in the background
+ate[2024-08-04 19:25:10 PKT], next run at: 2024-08-04 19:25:10 PKT)" was missed by 20:41:13.446988
+Run time of job "Task 2 (trigger: date[2024-08-04 19:30:15 PKT], next run at: 2024-08-04 19:30:15 PKT)" was missed by 20:36:08.447361
+Run time of job "Task 3 (trigger: date[2024-08-04 19:31:55 PKT], next run at: 2024-08-04 19:31:55 PKT)" was missed by 20:34:28.448358
+Run time of job "Task 4 (trigger: date[2024-08-04 19:32:55 PKT], next run at: 2024-08-04 19:32:55 PKT)" was missed by 20:33:28.449355
+Run time of job "Task 5 (trigger: date[2024-08-04 21:06:05 PKT], next run at: 2024-08-04 21:06:05 PKT)" was missed by 19:00:18.449694
+Run time of job "Task 6 (trigger: date[2024-08-04 21:07:55 PKT], next run at: 2024-08-04 21:07:55 PKT)" was missed by 18:58:28.450692
+Run time of job "Task 7 (trigger: date[2024-08-04 21:15:50 PKT], next run at: 2024-08-04 21:15:50 PKT)" was missed by 18:50:33.451103
+Run time of job "Task 8 (trigger: date[2024-08-04 21:21:10 PKT], next run at: 2024-08-04 21:21:10 PKT)" was missed by 18:45:13.451103
+Run time of job "Task 9 (trigger: date[2024-08-04 21:25:55 PKT], next run at: 2024-08-04 21:25:55 PKT)" was missed by 18:40:28.452101
+Run time of job "Task 10 (trigger: date[2024-08-04 21:30:55 PKT], next run at: 2024-08-04 21:30:55 PKT)" was missed by 18:35:28.452101
+Run time of job "Task 11 (trigger: date[2024-08-04 21:50:34 PKT], next run at: 2024-08-04 21:50:34 PKT)" was missed by 18:15:49.453497
+Run time of job "Task 12 (trigger: date[2024-08-04 21:55:52 PKT], next run at: 2024-08-04 21:55:52 PKT)" was missed by 18:10:31.453497
+Run time of job "Task 13 (trigger: date[2024-08-04 21:56:52 PKT], next run at: 2024-08-04 21:56:52 PKT)" was missed by 18:09:31.455027
+Run time of job "Task 14 (trigger: date[2024-08-04 21:59:00 PKT], next run at: 2024-08-04 21:59:00 PKT)" was missed by 18:07:23.456007
+Run time of job "Task 15 (trigger: date[2024-08-04 22:01:00 PKT], next run at: 2024-08-04 22:01:00 PKT)" was missed by 18:05:23.458007
+Run time of job "Task 16 (trigger: date[2024-08-04 22:03:15 PKT], next run at: 2024-08-04 22:03:15 PKT)" was missed by 18:03:08.459000
+Run time of job "Task 17 (trigger: date[2024-08-05 07:41:55 PKT], next run at: 2024-08-05 07:41:55 PKT)" was missed by 8:24:28.459000
+Run time of job "Task 18 (trigger: date[2024-08-05 08:33:11 PKT], next run at: 2024-08-05 08:33:11 PKT)" was missed by 7:33:12.459000
+Run time of job "Task 19 (trigger: date[2024-08-05 10:14:10 PKT], next run at: 2024-08-05 10:14:10 PKT)" was missed by 5:52:13.459999
+Run time of job "Task 20 (trigger: date[2024-08-05 10:22:50 PKT], next run at: 2024-08-05 10:22:50 PKT)" was missed by 5:43:33.459999
+Run time of job "Task 22 (trigger: date[2024-08-05 10:39:27 PKT], next run at: 2024-08-05 10:39:27 PKT)" was missed by 5:26:56.460997
+Run time of job "Task 23 (trigger: date[2024-08-05 10:47:00 PKT], next run at: 2024-08-05 10:47:00 PKT)" was missed by 5:19:23.460997
+Run time of job "Task 24 (trigger: date[2024-08-05 11:10:15 PKT], next run at: 2024-08-05 11:10:15 PKT)" was missed by 4:56:08.460997
+Run time of job "Task 26 (trigger: date[2024-08-05 16:04:50 PKT], next run at: 2024-08-05 16:04:50 PKT)" was missed by 0:01:33.461992
+start scheduler in the background
